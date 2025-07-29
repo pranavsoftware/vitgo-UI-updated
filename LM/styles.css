@@ -1,0 +1,241 @@
+/* General Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+/* Global Styles */
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    background-color: #f8f9fa;
+    color: #333;
+    font-size: 16px;
+    padding-top: 70px; /* Space for fixed header */
+    padding-bottom: 50px; /* Space for fixed footer */
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+/* Header */
+.header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem 2rem;
+    background-color: #000000;
+    color: #fff;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+}
+
+.header .logo {
+    display: flex;
+    align-items: center;
+}
+
+.header .logo img {
+    width: 50px;
+    height: 50px;
+    margin-right: 1rem;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.header h1 {
+    font-size: 1.5rem;
+    font-weight: 700;
+}
+
+/* Notice Section */
+.notice-container {
+    padding: 2rem;
+    background-color: #ffffff;
+    margin: 1rem 2rem;
+    border-radius: 8px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.notice-container h1 {
+    font-size: 1.8rem;
+    color: #333;
+    margin-bottom: 1rem;
+}
+
+#noticesList {
+    margin-top: 1rem;
+}
+
+.notice-item {
+    padding: 1rem;
+    border-bottom: 1px solid #ddd;
+}
+
+.notice-item:last-child {
+    border-bottom: none;
+}
+
+.notice-title {
+    font-weight: bold;
+    color: #e24c1f;
+    margin-bottom: 0.5rem;
+}
+
+.notice-content {
+    margin: 0.5rem 0;
+}
+
+.notice-postedBy,
+.notice-date {
+    font-size: 0.875rem;
+    color: #555;
+}
+
+/* Main Content */
+.main-content {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem;
+}
+
+.login-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+    max-width: 1000px;
+    justify-content: center;
+}
+
+.login-option {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s;
+    width: 180px;
+    padding: 1rem;
+}
+
+.login-option:hover {
+    transform: translateY(-10px);
+}
+
+.login-option img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    margin-bottom: 1rem;
+}
+
+.login-button {
+    display: block;
+    padding: 0.5rem 1rem;
+    background-color: #4b4e52;
+    color: #ffffff;
+    border-radius: 4px;
+    font-weight: bold;
+    transition: background-color 0.3s;
+}
+
+.login-button:hover {
+    background-color: #727477;
+}
+
+/* Footer */
+.footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    padding: 1rem;
+    background-color: #000000;
+    color: #ffffff;
+    text-align: center;
+    font-size: 0.875rem;
+}
+
+.footer .social-links a {
+    color: #ffffff;
+    margin: 0 0.5rem;
+    transition: color 0.3s;
+}
+
+.footer .social-links a:hover {
+    color: #b8bec5;
+}
+
+/* Responsive Design */
+@media (max-width: 1200px) {
+    .login-option {
+        width: 160px;
+    }
+}
+
+@media (max-width: 992px) {
+    .login-option {
+        width: 140px;
+    }
+
+    .footer {
+        padding: 1.5rem 1rem;
+    }
+}
+
+@media (max-width: 768px) {
+    body {
+        font-size: 14px;
+    }
+
+    .login-buttons {
+        gap: 1rem;
+        flex-direction: row;
+        overflow-x: auto; /* Allow horizontal scrolling on mobile */
+        white-space: nowrap;
+    }
+
+    .login-option {
+        width: 120px;
+        display: inline-block;
+    }
+
+    .header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .header h1 {
+        font-size: 1.3rem;
+    }
+
+    .notice-container {
+        padding: 1rem;
+        margin: 1rem;
+    }
+
+    .footer {
+        font-size: 0.75rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .header {
+        padding: 1rem;
+    }
+
+    .notice-container h1 {
+        font-size: 1.5rem;
+    }
+}
