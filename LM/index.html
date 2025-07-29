@@ -3,57 +3,220 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login Page</title>
+    <title>VITGO - Campus Transport Hub</title>
     <link rel="stylesheet" href="./styles.css">
-    <link rel="icon" href="../assets/tab logo.ico" type="image/x-icon"> <!-- Add your custom styles if needed -->
+    <link rel="icon" href="../assets/tab logo.ico" type="image/x-icon">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
-    <!-- Header Section -->
-    <header class="header">
-        <div class="logo">
-            <img src="../assets/logo (1).png" alt="Company Logo">
-            <h1>VITGO</h1>
-        </div>
-    </header>
-
-    <!-- Notice Section -->
-    <div class="notice-container">
-        <h1>Notice Hub</h1>
-        <div id="noticesList"></div> <!-- This is where notices will be displayed -->
-    </div>
-
-    <!-- Main Content Section -->
-    <main class="main-content">
-        <div class="login-buttons">
-            <div class="login-option">
-                <img src="../assets/VITian.jpeg" alt="Login 1">
-                <a href="../VITian/index.html" class="login-button">VITian</a>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <img src="logo.png" alt="VITGO Logo" class="logo-img">
+                <span class="logo-text">VITGO</span>
             </div>
-            <div class="login-option">
-                <img src="../assets/Parent Login..jpeg" alt="Login 2">
-                <a href="../VITGO Parents/Login Page/index.html" class="login-button">Parent</a>
+            <div class="nav-menu">
+                <a href="#portals" class="nav-link">Portals</a>
+                <a href="#contact" class="nav-link">Contact</a>
             </div>
-            <div class="login-option">
-                <img src="../assets/Taxi Driver.jpeg" alt="Login 3">
-                <a href="../VITGO Drivers/Login Page/index.html" class="login-button">Driver</a>
-            </div>
-            <div class="login-option">
-                <img src="../assets/taxi Management.jpeg" alt="Login 4">
-                <a href="../VITGO Management/Login Page/index.html" class="login-button">Taxi</a>
+            <div class="hamburger">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
             </div>
         </div>
-    </main>
+    </nav>
+
+    <!-- Main Portals Section -->
+    <section class="portals" id="portals">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Access Portals</h2>
+                <p class="section-subtitle">Choose your portal to access VITGO services</p>
+            </div>
+            <div class="portals-grid">
+                <div class="portal-card" data-aos="fade-up" data-aos-delay="100">
+                    <div class="portal-icon">
+                        <i class="fas fa-graduation-cap"></i>
+                    </div>
+                    <h3 class="portal-title">VITian</h3>
+                    <p class="portal-description">Access student portal for transport bookings and schedules</p>
+                    <a href="../VITian/index.html" class="btn btn-primary">
+                        <span>Access Portal</span>
+                        <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+                
+                <div class="portal-card" data-aos="fade-up" data-aos-delay="200">
+                    <div class="portal-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <h3 class="portal-title">Parent</h3>
+                    <p class="portal-description">Monitor your child's transport activities and payments</p>
+                    <a href="../VITGO Parents/Login Page/index.html" class="btn btn-primary">
+                        <span>Access Portal</span>
+                        <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+                
+                <div class="portal-card" data-aos="fade-up" data-aos-delay="300">
+                    <div class="portal-icon">
+                        <i class="fas fa-car"></i>
+                    </div>
+                    <h3 class="portal-title">Driver</h3>
+                    <p class="portal-description">Manage your routes, schedules, and passenger information</p>
+                    <a href="../VITGO Drivers/Login Page/index.html" class="btn btn-primary">
+                        <span>Access Portal</span>
+                        <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+                
+                <div class="portal-card" data-aos="fade-up" data-aos-delay="400">
+                    <div class="portal-icon">
+                        <i class="fas fa-cogs"></i>
+                    </div>
+                    <h3 class="portal-title">Management</h3>
+                    <p class="portal-description">Administrative portal for fleet and operations management</p>
+                    <a href="../VITGO Management/Login Page/index.html" class="btn btn-primary">
+                        <span>Access Portal</span>
+                        <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
 
     <!-- Footer Section -->
-    <footer class="footer">
-        <p>&copy; 2025 VITGO. All rights reserved.</p>
-        <div class="social-links">
-            <a href="https://facebook.com">Instagram</a> |
-            <a href="https://linkedin.com">LinkedIn</a>
+    <footer class="footer" id="contact">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <div class="footer-logo">
+                        <img src="../assets/logo (1).png" alt="VITGO Logo" class="footer-logo-img">
+                        <span class="footer-logo-text">VITGO</span>
+                    </div>
+                    <p class="footer-description">
+                        Connecting VIT campus with smart, reliable, and efficient transport solutions for students, parents, and staff.
+                    </p>
+                    <div class="social-links">
+                        <a href="https://facebook.com" class="social-link" target="_blank">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="https://instagram.com" class="social-link" target="_blank">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="https://linkedin.com" class="social-link" target="_blank">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                        <a href="https://twitter.com" class="social-link" target="_blank">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="footer-section">
+                    <h3 class="footer-title">Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="#portals">Portals</a></li>
+                        <li><a href="../VITian/index.html">Student Login</a></li>
+                        <li><a href="../VITGO Parents/Login Page/index.html">Parent Login</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h3 class="footer-title">Services</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">Transport Booking</a></li>
+                        <li><a href="#">Route Planning</a></li>
+                        <li><a href="#">Payment Management</a></li>
+                        <li><a href="#">Live Tracking</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h3 class="footer-title">Contact Info</h3>
+                    <div class="contact-info">
+                        <p><i class="fas fa-map-marker-alt"></i> VIT Campus, Vellore</p>
+                        <p><i class="fas fa-phone"></i> +91 123 456 7890</p>
+                        <p><i class="fas fa-envelope"></i> support@vitgo.com</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2025 VITGO. All rights reserved. | Designed with ❤️ for VIT Community</p>
+            </div>
         </div>
     </footer>
 
-    <!-- Firebase Scripts -->
+    <!-- Scroll to Top Button -->
+    <button class="scroll-to-top" id="scrollToTop">
+        <i class="fas fa-chevron-up"></i>
+    </button>
+
+    <!-- Scripts -->
     <script type="module" src="./scripts.js" defer></script>
+    <script>
+        // Mobile menu toggle
+        const hamburger = document.querySelector('.hamburger');
+        const navMenu = document.querySelector('.nav-menu');
+        
+        hamburger.addEventListener('click', () => {
+            hamburger.classList.toggle('active');
+            navMenu.classList.toggle('active');
+        });
+        
+        // Navbar scroll effect
+        window.addEventListener('scroll', () => {
+            const navbar = document.querySelector('.navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+        
+        // Scroll to top functionality
+        const scrollToTopBtn = document.getElementById('scrollToTop');
+        
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 300) {
+                scrollToTopBtn.classList.add('visible');
+            } else {
+                scrollToTopBtn.classList.remove('visible');
+            }
+        });
+        
+        scrollToTopBtn.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+        
+        // Simple AOS-like animation
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+        
+        document.querySelectorAll('[data-aos]').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(30px)';
+            el.style.transition = 'all 0.6s ease';
+            observer.observe(el);
+        });
+    </script>
 </body>
 </html>
