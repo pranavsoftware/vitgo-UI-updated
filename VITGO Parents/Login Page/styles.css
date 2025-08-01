@@ -1,0 +1,239 @@
+/* Basic Reset */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f9f9f9;
+    color: #000000;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh; /* Ensure footer stays at the bottom */
+}
+
+/* Header Styles */
+header {
+    background-color: #000000;
+    color: white;
+    padding: 10px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap; /* Allow wrapping for smaller screens */
+}
+
+.header-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    height: 50px;
+}
+
+h1 {
+    font-size: 24px;
+}
+
+.back-button {
+    background-color: #eb0000;
+    color: #fafafa;
+    padding: 10px 15px;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+.back-button:hover {
+    background-color: #e7e7e7;
+}
+
+/* Notice Styles */
+.notice {
+    background-color: #e7f3fe;
+    border-left: 6px solid #f35d21;
+    margin: 20px auto; /* Centered */
+    padding: 15px; /* Increased padding for better touch targets */
+    max-width: 600px; /* Maximum width for notice */
+    text-align: center; /* Center text in notice */
+}
+
+/* Form Toggle Styles */
+.form-toggle {
+    display: flex;
+    justify-content: center;
+    margin: 20px 0;
+}
+
+.form-toggle button {
+    padding: 15px 30px; /* Larger padding for better touch targets */
+    border: none;
+    background-color: #db8708;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    margin: 0 10px; /* Space between buttons */
+    font-size: 16px; /* Increased font size for readability */
+}
+
+.form-toggle button.active {
+    background-color: #ff0505;
+}
+
+.form-toggle button:hover {
+    background-color: #572727;
+}
+
+/* Form Section Styles */
+.form-section {
+    display: none;
+    padding: 20px;
+    background-color: white;
+    border-radius: 5px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    margin: 20px auto; /* Centered */
+    max-width: 500px; /* Maximum width for forms */
+}
+
+.form-section.active {
+    display: block;
+}
+
+h2 {
+    text-align: center; /* Center section titles */
+    margin-bottom: 15px; /* Space below title */
+}
+
+/* Input and Button Styles */
+label {
+    display: block;
+    margin: 10px 0 5px;
+}
+
+input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+button[type="submit"] {
+    width: 100%;
+    padding: 15px; /* Larger padding for better touch targets */
+    background-color: #373a37;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    font-size: 16px; /* Increased font size for readability */
+}
+
+button[type="submit"]:hover {
+    background-color: #707c71;
+}
+
+/* Footer Styles */
+footer {
+    background-color: #000000;
+    color: white;
+    text-align: center;
+    padding: 20px 0;
+    margin-top: auto; /* Push footer to the bottom */
+}
+
+.social-links {
+    margin-top: 10px;
+}
+
+.social-links a {
+    color: white;
+    text-decoration: none;
+    margin: 0 10px;
+}
+
+.social-links a:hover {
+    text-decoration: underline;
+}
+
+/* Notification Styles */
+.notification {
+    position: fixed;
+    top: 20%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 20px;
+    background-color: #4CAF50;
+    color: white;
+    border-radius: 5px;
+    z-index: 1000;
+    animation: fadeIn 0.5s ease-out;
+}
+
+.notification.hidden {
+    display: none;
+}
+
+#close-notification {
+    margin-top: 10px;
+    background-color: #f44336;
+    border: none;
+    color: white;
+    padding: 5px 10px;
+    cursor: pointer;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+    .header-content {
+        flex-direction: column; /* Stack logo and button */
+        align-items: flex-start; /* Align items to the left */
+    }
+
+    .back-button {
+        margin-top: 10px; /* Space between logo/name and button */
+        width: 100%; /* Full width button for easy clicking */
+        text-align: center; /* Center text in button */
+    }
+
+    .notice {
+        width: 90%; /* Full width on smaller screens */
+    }
+
+    .form-toggle {
+        flex-direction: column; /* Stack buttons vertically */
+    }
+
+    .form-toggle button {
+        width: 46%; /* Adjusted width for stacked buttons */
+        margin: 5px 105px; /* Space between stacked buttons */
+    }
+
+    .form-section {
+        width: 90%; /* Full width for forms */
+    }
+}
+
+@media (max-width: 480px) {
+    h1 {
+        font-size: 20px; /* Smaller font size for mobile */
+    }
+
+    button[type="submit"],
+    .form-toggle button {
+        padding: 15px; /* Consistent padding for better touch targets */
+        font-size: 16px; /* Larger font size for mobile */
+    }
+
+    input {
+        padding: 12px; /* Increased padding for input fields */
+    }
+}

@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<!-- saved from url=(0026)https://vitv.easycab.site/ -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <link rel="apple-touch-icon" href="https://vitv.easycab.site/assets/apple-touch-icon-iphone-60x60.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="https://vitv.easycab.site/assets/apple-touch-icon-ipad-76x76.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="https://vitv.easycab.site/assets/apple-touch-icon-iphone-retina-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="https://vitv.easycab.site/assets/apple-touch-icon-ipad-retina-152x152.png">
+    <meta name="mobile-web-app-capable" content="yes">
+    <title>Login</title>
+    <link rel="stylesheet" href="./Login_files/styles_hidden.css">
+    <link rel="icon" href="https://vitv.easycab.site/assets/tab%20logo.ico.png" type="image/x-icon">
+    <link rel="manifest" href="https://vitv.easycab.site/manifest.json">
+    <!-- face-api.js via CDN -->
+    <script defer="" src="./Login_files/face-api.min.js.download"></script>
+    <!-- Firebase -->
+    <script defer="" src="./Login_files/firebase-app-compat.js.download"></script>
+    <script defer="" src="./Login_files/firebase-auth-compat.js.download"></script>
+    <script defer="" src="./Login_files/firebase-firestore-compat.js.download"></script>
+    <script defer="" src="./Login_files/firebase-storage-compat.js.download"></script>
+    <!-- Your JavaScript -->
+    <script defer="" type="module" src="./Login_files/app.js.download"></script>
+</head>
+
+<body>
+    <!-- Header -->
+    <header>
+        <div class="logo-container">
+            <img src="./Login_files/logo (1).png" alt="Company Logo" class="logo">
+            <h1>Easycab</h1>
+        </div>
+    </header>
+
+    <!-- Main Container -->
+    <main>
+        <div class="container">
+            <div class="side-image">
+                <img src="./Login_files/loginimage.png" alt="Side Image">
+            </div>
+            <div class="auth-container">
+                <div class="buttons">
+                    <h2>Welcome😃</h2>
+                    <p>Get started by logging in or signing up</p>
+                    <button id="login-btn">Login</button>
+                    <button id="register-btn">Register</button>
+                    <button id="instruction-video-btn" class="instruction-btn">Instruction Video</button>
+                </div>
+                <!-- Modal Structure -->
+                <div id="videoModal" class="modal">
+                    <div class="modal-content">
+                        <span class="close">×</span>
+                        <video id="instruction-video" preload="metadata" autoplay="" muted="" controls="">
+                            <source src="../assets/Guidence.mp4" type="video/mp4">
+                            <!-- Update with your video path -->
+                            Your browser does not support the video tag.
+                        </video>
+                    </div>
+                </div>
+
+                <!-- Login Form -->
+                <form id="login-form" class="form hidden">
+                    <h2>Login</h2>
+                    <input type="email" id="login-email" placeholder="Please enter your official VIT email ID:" required="">
+                    <input type="password" id="login-password" placeholder="Password" required="">
+                    <div id="login-video-container">
+                        <video id="login-video" width="320" height="240" autoplay="" muted=""></video>
+                        <canvas id="login-canvas" width="320" height="240"></canvas>
+                        <button type="button" id="login-scan-btn">Scan Face</button>
+                    </div>
+                    <p id="login-status"></p>
+                    <button type="submit">Access Dashboard</button>
+                </form>
+
+                <!-- Register Form -->
+                <form id="register-form" class="form hidden">
+                    <h2>Register</h2>
+                    <input type="text" id="register-name" placeholder="Name" required="">
+                    <input type="email" id="register-email" placeholder="Please enter your official VIT email ID:" required="">
+                    <input type="password" id="register-password" placeholder="Password" required="">
+                    <div id="register-video-container">
+                        <video id="register-video" width="320" height="240" autoplay="" muted=""></video>
+                        <canvas id="register-canvas" width="320" height="240"></canvas>
+                        <button type="button" id="register-scan-btn">Scan Face</button>
+                    </div>
+                    <p id="register-status"></p>
+                    <div class="terms">
+                        <input type="checkbox" id="terms" required="">
+                        <label for="terms">I agree to the <a href="https://vitv.easycab.site/Terms&amp;Condition/Terms%20and%20condition.html">Terms
+                                and Conditions</a></label>
+                    </div>
+                    <button type="submit">Register</button>
+                </form>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <p>© 2024 Easycab. All rights reserved.</p>
+        <div class="social-links">
+            <a href="https://vitv.easycab.site/#"><img src="./Login_files/instagram.jpeg" alt="Instagram"></a>
+            <a href="https://vitv.easycab.site/#"><img src="./Login_files/Linkedin.png" alt="LinkedIn"></a>
+        </div>
+    </footer>
+
+
+
+</body></html>

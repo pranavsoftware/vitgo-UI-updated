@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Parent Dashboard</title>
+    <link rel="icon" href="../assets/tab logo.ico" type="image/x-icon">
+    <link rel="stylesheet" href="../dashboard/styles.css">
+    <link rel="manifest" href="../Parents/manifest.json">
+</head>
+
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="logo-container">
+            <img src="../assets/logo (1).png" alt="Company Logo" class="logo">
+            <h1 class="company-name">VITGO Parent Dashboard</h1>
+        </div>
+        <div class="user-info">
+            <span id="userName"></span>
+        </div>
+        <button class="menu-btn" id="menuBtn">&#x2630;</button>
+    </header>
+
+    <!-- Sidebar -->
+    <nav class="sidebar" id="sidebar">
+        <a href="../dashboard/">Home</a>
+        <a href="../Ward Details/">Ward Details</a>
+        <a href="../Ward Booking Taxi/">Book taxi</a>
+        <a href="../Ward Booking History/">Booking history</a>
+        <a href="../Ward Location/">Track Ward</a>
+        <a href="../Complain File/">File a Complaint</a>
+        <a href="../Develop Team/">About Us | Contact Information</a>
+        <button id="logoutBtn" class="logout-btn">Logout</button>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="content">
+        <section class="notice-section">
+            <h2>Notices</h2>
+            <div id="noticeContainer"></div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>&copy; 2025 VITGO. All rights reserved.</p>
+    </footer>
+
+    <script type="module" src="../dashboard/scripts.js"></script>
+</body>
+
+</html>

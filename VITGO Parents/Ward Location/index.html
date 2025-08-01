@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VITGO | Location</title>
+    <link rel="stylesheet" href="../Ward Location/styles.css">
+    <link rel="icon" href="../assets/tab logo.ico.png" type="image/x-icon">
+
+    <!-- Leaflet CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="logo">
+            <img src="../assets/logo (1).png" alt="VITGO Logo">
+            <h1>VITGO Parent Dashboard</h1>
+        </div>
+        <a href="../dashboard/" class="go-back-btn">Go Back</a>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+        <section class="map-container">
+            <h2>Child's Last Known Location</h2>
+            <div id="map" style="height: 400px;"></div> <!-- Leaflet map container -->
+        </section>
+        <section class="details">
+            <h3>Ward Location Details</h3>
+            <p id="latitude">Latitude: N/A</p>
+            <p id="longitude">Longitude: N/A</p>
+            <p id="address">Address: N/A</p>
+            <p id="timestamp">Last Updated: N/A</p>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2025 VITGO. All rights reserved.</p>
+        <div class="social-links">
+            <a href="#">Facebook</a> | <a href="#">Twitter</a> | <a href="#">Instagram</a>
+        </div>
+    </footer>
+
+    <script type="module" src="../Ward Location/scripts.js"></script>
+    
+    <!-- Leaflet JS -->
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+</body>
+</html>

@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Taxi for Child</title>
+    <link rel="icon" href="../assets/tab logo.ico" type="image/x-icon">
+    <link rel="stylesheet" href="../Ward Booking Taxi/styles.css">
+    <script type="module" src="../Ward Booking Taxi/scripts.js" defer></script>
+</head>
+
+<body>
+    <header>
+        <div class="header-container">
+            <img src="../assets/logo (1).png" alt="Company Logo" class="logo">
+            <h1>VITGO Parent Dashboard</h1>
+            <button onclick="window.location.href='../dashboard/'" class="back-button">Go Back</button>
+        </div>
+    </header>
+
+    <main>
+        <form id="bookingForm">
+            <h2>Book a Taxi for Your Child</h2>
+            <label for="from">From:</label>
+            <select id="from" required>
+                <option value="Select">Select</option>
+                <option value="VIT Vellore">VIT Vellore</option>
+                <option value="Katpadi">Katpadi</option>
+                <option value="Chennai Airport">Chennai Airport</option>
+                <option value="Banglore Airport">Banglore Airport</option>
+            </select>
+
+            <label for="to">To:</label>
+            <select id="to" required>
+                <option value="Select">Select</option>
+                <option value="VIT Vellore">VIT Vellore</option>
+                <option value="Katpadi">Katpadi</option>
+                <option value="Chennai Airport">Chennai Airport</option>
+                <option value="Banglore Airport">Banglore Airport</option>
+            </select>
+
+            <label for="date">Date:</label>
+            <input type="date" id="date" name="date" required>
+
+            <label for="time">Time:</label>
+            <input type="time" id="time" name="time" required>
+
+            <label for="noOfStudents">Number of Students:</label>
+            <input type="number" id="noOfStudents" name="noOfStudents" min="1" required>
+
+            <label for="car">Select Car:</label>
+            <select id="car" required>
+                <option value="Tata Zest">Tata Zest</option>
+                <option value="Dzire">Dzire</option>
+                <option value="Innova">Innova</option>
+            </select>
+
+            <label for="paymentMode">Payment Mode:</label>
+            <select id="paymentMode" name="paymentMode" required>
+                <option value="Cash">Cash</option>
+                <option value="Card">Card</option>
+            </select>
+
+            <label for="message">Message:</label>
+            <textarea id="message" name="message" placeholder="Additional details" required></textarea>
+
+            <button type="submit">Book Taxi</button>
+            <div class="notice">
+                <p>Dear Parents,
+                    Please review the Booking History section to verify your booking details, including date and time.
+
+                    Thank you.</p>
+            </div>
+
+        </form>
+
+        <div id="successModal" class="modal">
+            <div class="modal-content">
+                <p>Booking successfully submitted!</p>
+            </div>
+        </div>
+
+    </main>
+
+    <footer class="footer">
+        <div class="social-links">
+            <a href="#" target="_blank">Facebook</a>
+            <a href="#" target="_blank">Twitter</a>
+            <a href="#" target="_blank">Instagram</a>
+        </div>
+        <p>&copy; 2025 VITGO. All rights reserved.</p>
+    </footer>
+</body>
+
+</html>

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Parent Complaint - VITGO</title>
+    <link rel="stylesheet" href="../Complain File/styles.css">
+</head>
+<body>
+    <!-- Header Section -->
+    <header>
+        <div class="header-content">
+            <img src="../assets/logo (1).png" alt="VITGO Logo" class="logo">
+            <h1>VITGO Parent Dashboard</h1>
+            <a href="../dashboard/" class="go-back">Go Back</a>
+        </div>
+    </header>
+
+    <!-- Complaint Form -->
+    <main>
+        <section class="complaint-form-section">
+            <h2>Submit a Complaint</h2>
+            <form id="complaint-form">
+                <div class="form-group">
+                    <label for="parentName">Your Name:</label>
+                    <input type="text" id="parentName" name="parentName" placeholder="Enter your name" required>
+                </div>
+                <div class="form-group">
+                    <label for="complaintType">Complaint Type:</label>
+                    <select id="complaintType" name="complaintType" required>
+                        <option value="">Select Complaint Type</option>
+                        <option value="Driver Misconduct">Driver Misconduct</option>
+                        <option value="Late Pickup">Late Pickup</option>
+                        <option value="Overcharging">Overcharging</option>
+                        <option value="Vehicle Condition">Vehicle Condition</option>
+                        <option value="Other">Other</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="driverName">Driver Name:</label>
+                    <input type="text" id="driverName" name="driverName" placeholder="Enter driver's name" required>
+                </div>
+                <div class="form-group">
+                    <label for="taxiNumber">Taxi Number:</label>
+                    <input type="text" id="taxiNumber" name="taxiNumber" placeholder="Enter taxi number" required>
+                </div>
+                <div class="form-group">
+                    <label for="driverMobile">Driver Mobile Number:</label>
+                    <input type="tel" id="driverMobile" name="driverMobile" placeholder="Enter mobile number" required>
+                </div>
+                <div class="form-group">
+                    <label for="complaintDetails">Details:</label>
+                    <textarea id="complaintDetails" name="complaintDetails" rows="5" placeholder="Provide detailed information..." required></textarea>
+                </div>
+                <button type="submit" class="submit-btn">Submit Complaint</button>
+            </form>
+        </section>
+
+        <section class="complaint-history-section">
+            <button id="view-history" class="history-btn">View Complaint History</button>
+            <div id="history-list" class="history-list"></div>
+        </section>
+    </main>
+
+    <!-- Footer Section -->
+    <footer>
+        <div class="footer-content">
+            <p>© 2025 VITGO. All Rights Reserved.</p>
+            <div class="social-links">
+                <a href="https://facebook.com" target="_blank">Facebook</a>
+                <a href="https://twitter.com" target="_blank">Twitter</a>
+                <a href="https://instagram.com" target="_blank">Instagram</a>
+            </div>
+        </div>
+    </footer>
+
+    <script type="module" src="../Complain File/scripts.js"></script>
+</body>
+</html>

@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <link rel="apple-touch-icon" href="../assets/apple-touch-icon-iphone-60x60.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="../assets/apple-touch-icon-ipad-76x76.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="../assets/apple-touch-icon-iphone-retina-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="../assets/apple-touch-icon-ipad-retina-152x152.png">
+    <meta name="mobile-web-app-capable" content="yes">
+    <title>Parent Login and Registration</title>
+    <link rel="icon" href="../assets/tab logo.ico" type="image/x-icon">
+    <link rel="stylesheet" href="../Login Page/styles.css">
+    <link rel="manifest" href="../Parents/manifest.json">
+</head>
+
+<body>
+    <!-- Header Section -->
+    <header>
+        <div class="header-content">
+            <img src="../assets/logo (1).png" alt="Company Logo" class="logo">
+            <h1>VITGO - Parent Portal</h1>
+            <a href="/LM/index.html" class="back-button">Go Back</a>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+        <div class="notice">
+            <p><strong>Notice:</strong> If you encounter any issues, please reach out to us at <a href="mailto:vitgo.vitvellore@gmail.com">vitgo.vitvellore@gmail.com</a>. We're here to help!</p>
+        </div>
+        <!-- Toggle Buttons -->
+        <div class="form-toggle">
+            <button id="showLogin" class="active">Login</button>
+            <button id="showRegister">Register</button>
+        </div>
+
+        <!-- Login Form -->
+        <section id="login-section" class="form-section active">
+            <h2>Parent Login</h2>
+            <form id="loginForm">
+                <input type="text" id="childUID" placeholder="Enter Child UID" required />
+                <input type="email" id="loginEmail" placeholder="Email" required autocomplete="username" />
+                <input type="password" id="loginPassword" placeholder="Password" required autocomplete="current-password" />
+                <button type="submit">Login</button>
+            </form>
+        </section>
+
+        <!-- Registration Form -->
+        <section id="registration-section" class="form-section">
+            <h2>Parent Registration</h2>
+            <form id="registerForm">
+                <label for="parentName">Parent Name:</label>
+                <input type="text" id="parentName" placeholder="Enter your name" required />
+
+                <label for="parentPhone">Parent Phone Number:</label>
+                <input type="tel" id="parentPhone" placeholder="Enter your phone number" required />
+
+                <label for="parentEmail">Parent Email ID:</label>
+                <input type="email" id="parentEmail" placeholder="Enter your email" required autocomplete="username" />
+
+                <label for="parentPassword">Password:</label>
+                <input type="password" id="parentPassword" placeholder="Create a password" required autocomplete="new-password" />
+
+                <label for="childUIDRegister">Child UID:</label>
+                <input type="text" id="childUIDRegister" placeholder="Enter Child UID" required />
+
+                <button type="submit">Register</button>
+            </form>
+        </section>
+    </main>
+
+    <!-- Pop-Up Notification -->
+    <div id="notification" class="notification hidden">
+        <span id="notification-message"></span>
+        <button id="close-notification">Close</button>
+    </div>
+
+    <!-- Footer Section -->
+    <footer>
+        <div class="footer-content">
+            <p>&copy; 2025 VITGO. All Rights Reserved.</p>
+            <div class="social-links">
+                <a href="#">Instagram</a>|<a href="#">LinkedIn</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Firebase and JavaScript -->
+    <script src="../Login Page/scripts.js" type="module"></script>
+</body>
+
+</html>
