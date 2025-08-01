@@ -17,43 +17,100 @@ const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 const db = getFirestore(app);
 
-// Form toggle functionality
+// Enhanced form toggle functionality with loading states
 document.getElementById("showLogin").addEventListener("click", () => {
-    document.getElementById("login-section").classList.add("active");
-    document.getElementById("registration-section").classList.remove("active");
-    document.getElementById("showLogin").classList.add("active");
-    document.getElementById("showRegister").classList.remove("active");
+    switchForm('login');
 });
 
 document.getElementById("showRegister").addEventListener("click", () => {
-    document.getElementById("registration-section").classList.add("active");
-    document.getElementById("login-section").classList.remove("active");
-    document.getElementById("showRegister").classList.add("active");
-    document.getElementById("showLogin").classList.remove("active");
+    switchForm('register');
 });
 
-// Function to show notification
-function showNotification(message) {
+function switchForm(formType) {
+    const loginSection = document.getElementById("login-section");
+    const registerSection = document.getElementById("registration-section");
+    const loginBtn = document.getElementById("showLogin");
+    const registerBtn = document.getElementById("showRegister");
+    
+    if (formType === 'login') {
+        loginSection.classList.add("active");
+        registerSection.classList.remove("active");
+        loginBtn.classList.add("active");
+        registerBtn.classList.remove("active");
+    } else {
+        registerSection.classList.add("active");
+        loginSection.classList.remove("active");
+        registerBtn.classList.add("active");
+        loginBtn.classList.remove("active");
+    }
+}
+
+// Enhanced notification system
+function showNotification(message, type = 'success') {
     const notification = document.getElementById("notification");
     const notificationMessage = document.getElementById("notification-message");
-    notificationMessage.innerText = message;
-    notification.classList.remove("hidden");
+    const notificationIcon = document.getElementById("notification-icon");
+    
+    // Set message and icon based on type
+    notificationMessage.textContent = message;
+    
+    if (type === 'error') {
+        notificationIcon.textContent = '⚠️';
+        notification.classList.add('error');
+    } else {
+        notificationIcon.textContent = '✓';
+        notification.classList.remove('error');
+    }
+    
+    // Show notification with animation
+    notification.classList.add("show");
+    
+    // Auto-hide after 5 seconds
     setTimeout(() => {
-        notification.classList.add("hidden");
-    }, 3000); // Auto-hide after 3 seconds
+        hideNotification();
+    }, 5000);
+}
+
+function hideNotification() {
+    const notification = document.getElementById("notification");
+    notification.classList.remove("show");
 }
 
 // Close notification button functionality
-document.getElementById("close-notification").addEventListener("click", () => {
-    document.getElementById("notification").classList.add("hidden");
-});
+document.getElementById("close-notification").addEventListener("click", hideNotification);
 
-// Login Form Submission
+// Loading state management
+function setLoadingState(button, isLoading) {
+    const btnText = button.querySelector('.btn-text');
+    const btnLoader = button.querySelector('.btn-loader');
+    
+    if (isLoading) {
+        button.disabled = true;
+        btnText.classList.add('hidden');
+        btnLoader.classList.remove('hidden');
+    } else {
+        button.disabled = false;
+        btnText.classList.remove('hidden');
+        btnLoader.classList.add('hidden');
+    }
+}
+
+// Enhanced Login Form Submission
 document.getElementById("loginForm").addEventListener("submit", async (e) => {
     e.preventDefault();
+    const form = e.target;
+    const submitBtn = form.querySelector('button[type="submit"]');
     const email = document.getElementById("loginEmail").value;
     const password = document.getElementById("loginPassword").value;
     const childUID = document.getElementById("childUID").value;
+
+    // Validate inputs
+    if (!email || !password || !childUID) {
+        showNotification("Please fill in all fields", 'error');
+        return;
+    }
+
+    setLoadingState(submitBtn, true);
 
     try {
         const uidDoc = doc(db, "usersParent", childUID);
@@ -65,59 +122,154 @@ document.getElementById("loginForm").addEventListener("submit", async (e) => {
 
             if (storedEmail === email) {
                 await signInWithEmailAndPassword(auth, email, password);
-                showNotification("Login successful!");
-                window.location.href = "../dashboard/index.html";
+                showNotification("Login successful! Redirecting...", 'success');
+                
+                // Smooth redirect with delay
+                setTimeout(() => {
+                    window.location.href = "../dashboard/index.html";
+                }, 1500);
             } else {
-                showNotification("Login failed: Email does not match the registered account.");
+                showNotification("Email does not match the registered account", 'error');
+                setLoadingState(submitBtn, false);
             }
         } else {
-            showNotification("Login failed: No user found with the provided Child UID.");
+            showNotification("No account found with this Child UID", 'error');
+            setLoadingState(submitBtn, false);
         }
     } catch (error) {
-        showNotification("Login failed: " + error.message);
+        let errorMessage = "Login failed";
+        
+        // Handle specific Firebase errors
+        if (error.code === 'auth/user-not-found') {
+            errorMessage = "No account found with this email";
+        } else if (error.code === 'auth/wrong-password') {
+            errorMessage = "Incorrect password";
+        } else if (error.code === 'auth/invalid-email') {
+            errorMessage = "Invalid email format";
+        } else if (error.code === 'auth/too-many-requests') {
+            errorMessage = "Too many failed attempts. Please try again later";
+        }
+        
+        showNotification(errorMessage, 'error');
+        setLoadingState(submitBtn, false);
     }
 });
 
-// Registration Form Submission
+// Enhanced Registration Form Submission
 document.getElementById("registerForm").addEventListener("submit", async (e) => {
     e.preventDefault();
+    const form = e.target;
+    const submitBtn = form.querySelector('button[type="submit"]');
     const parentName = document.getElementById("parentName").value;
     const parentPhone = document.getElementById("parentPhone").value;
     const parentEmail = document.getElementById("parentEmail").value;
     const parentPassword = document.getElementById("parentPassword").value;
     const childUID = document.getElementById("childUIDRegister").value;
 
-    // Disable button to prevent multiple submissions
-    const registerButton = e.target.querySelector("button[type='submit']");
-    registerButton.disabled = true;
-
-    if (!childUID) {
-        showNotification("Child UID cannot be empty.");
-        registerButton.disabled = false;
+    // Validate inputs
+    if (!parentName || !parentPhone || !parentEmail || !parentPassword || !childUID) {
+        showNotification("Please fill in all fields", 'error');
         return;
     }
 
-    const uidDoc = doc(db, "usersParent", childUID);
-    const uidSnapshot = await getDoc(uidDoc);
+    // Validate password strength
+    if (parentPassword.length < 6) {
+        showNotification("Password must be at least 6 characters long", 'error');
+        return;
+    }
 
-    if (uidSnapshot.exists()) {
-        showNotification("This Child UID is already registered.");
-        registerButton.disabled = false;
-    } else {
-        try {
+    // Validate phone number format (basic)
+    const phoneRegex = /^\d{10}$/;
+    if (!phoneRegex.test(parentPhone.replace(/\D/g, ''))) {
+        showNotification("Please enter a valid 10-digit phone number", 'error');
+        return;
+    }
+
+    setLoadingState(submitBtn, true);
+
+    try {
+        const uidDoc = doc(db, "usersParent", childUID);
+        const uidSnapshot = await getDoc(uidDoc);
+
+        if (uidSnapshot.exists()) {
+            showNotification("This Child UID is already registered", 'error');
+            setLoadingState(submitBtn, false);
+        } else {
             await createUserWithEmailAndPassword(auth, parentEmail, parentPassword);
             await setDoc(uidDoc, {
                 parentName: parentName,
                 parentPhone: parentPhone,
                 parentEmail: parentEmail,
-                childUID: childUID
+                childUID: childUID,
+                createdAt: new Date().toISOString()
             });
 
-            showNotification("Registration successful!");
-            window.location.href = "../dashboard/index.html";
-        } catch (error) {
-            showNotification("Registration failed: " + error.message);
-            registerButton.disabled = false;
+            showNotification("Registration successful! Redirecting...", 'success');
+            
+            // Smooth redirect with delay
+            setTimeout(() => {
+                window.location.href = "../dashboard/index.html";
+            }, 1500);
         }
+    } catch (error) {
+        let errorMessage = "Registration failed";
+        
+        // Handle specific Firebase errors
+        if (error.code === 'auth/email-already-in-use') {
+            errorMessage = "An account with this email already exists";
+        } else if (error.code === 'auth/invalid-email') {
+            errorMessage = "Invalid email format";
+        } else if (error.code === 'auth/weak-password') {
+            errorMessage = "Password is too weak";
+        }
+        
+        showNotification(errorMessage, 'error');
+        setLoadingState(submitBtn, false);
     }
 });
+
+// Input validation and real-time feedback
+document.addEventListener('DOMContentLoaded', () => {
+    // Add input event listeners for real-time validation
+    const inputs = document.querySelectorAll('.form-input');
+    
+    inputs.forEach(input => {
+        input.addEventListener('blur', validateInput);
+        input.addEventListener('input', clearValidationError);
+    });
+});
+
+function validateInput(e) {
+    const input = e.target;
+    const value = input.value.trim();
+    
+    // Remove existing error styling
+    input.classList.remove('error');
+    
+    // Email validation
+    if (input.type === 'email' && value) {
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!emailRegex.test(value)) {
+            input.classList.add('error');
+        }
+    }
+    
+    // Password validation
+    if (input.type === 'password' && value) {
+        if (value.length < 6) {
+            input.classList.add('error');
+        }
+    }
+    
+    // Phone validation
+    if (input.type === 'tel' && value) {
+        const phoneRegex = /^\d{10}$/;
+        if (!phoneRegex.test(value.replace(/\D/g, ''))) {
+            input.classList.add('error');
+        }
+    }
+}
+
+function clearValidationError(e) {
+    e.target.classList.remove('error');
+}

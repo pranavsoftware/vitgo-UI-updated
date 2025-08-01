@@ -11,80 +11,158 @@
     <link rel="apple-touch-icon" sizes="114x114" href="../assets/apple-touch-icon-iphone-retina-120x120.png">
     <link rel="apple-touch-icon" sizes="144x144" href="../assets/apple-touch-icon-ipad-retina-152x152.png">
     <meta name="mobile-web-app-capable" content="yes">
-    <title>Parent Login and Registration</title>
+    <title>VITGO - Parent Login & Registration</title>
     <link rel="icon" href="../assets/tab logo.ico" type="image/x-icon">
     <link rel="stylesheet" href="../Login Page/styles.css">
     <link rel="manifest" href="../Parents/manifest.json">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
 
 <body>
-    <!-- Header Section -->
-    <header>
-        <div class="header-content">
-            <img src="../assets/logo (1).png" alt="Company Logo" class="logo">
-            <h1>VITGO - Parent Portal</h1>
-            <a href="/LM/index.html" class="back-button">Go Back</a>
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="nav-content">
+            <div class="nav-brand">
+                <img src="../assets/logo (1).png" alt="VITGO Logo" class="nav-logo">
+                <span class="nav-title">VITGO Parent Portal</span>
+            </div>
+            <a href="../../LM/index.html" class="nav-back-btn">
+                <span class="back-icon">←</span>
+                Back to Portal
+            </a>
         </div>
-    </header>
+    </nav>
 
     <!-- Main Content -->
-    <main>
-        <div class="notice">
-            <p><strong>Notice:</strong> If you encounter any issues, please reach out to us at <a href="mailto:vitgo.vitvellore@gmail.com">vitgo.vitvellore@gmail.com</a>. We're here to help!</p>
+    <main class="main-content">
+        <div class="auth-container">
+            <div class="auth-header">
+                <h1 class="auth-title">Welcome to VITGO</h1>
+                <p class="auth-subtitle">Access your child's academic journey</p>
+            </div>
+
+            <!-- Form Toggle -->
+            <div class="form-toggle">
+                <button id="showLogin" class="toggle-btn active" data-form="login">
+                    <span class="toggle-icon">👤</span>
+                    Login
+                </button>
+                <button id="showRegister" class="toggle-btn" data-form="register">
+                    <span class="toggle-icon">✍️</span>
+                    Register
+                </button>
+            </div>
+
+            <!-- Login Form -->
+            <div id="login-section" class="form-section active">
+                <div class="form-card">
+                    <div class="form-header">
+                        <h2>Parent Login</h2>
+                        <p>Sign in to access your dashboard</p>
+                    </div>
+                    <form id="loginForm" class="auth-form">
+                        <div class="input-group">
+                            <label for="childUID" class="input-label">Child UID</label>
+                            <input type="text" id="childUID" class="form-input" placeholder="Enter your child's UID" required />
+                        </div>
+                        <div class="input-group">
+                            <label for="loginEmail" class="input-label">Email Address</label>
+                            <input type="email" id="loginEmail" class="form-input" placeholder="Enter your email" required autocomplete="username" />
+                        </div>
+                        <div class="input-group">
+                            <label for="loginPassword" class="input-label">Password</label>
+                            <input type="password" id="loginPassword" class="form-input" placeholder="Enter your password" required autocomplete="current-password" />
+                        </div>
+                        <button type="submit" class="submit-btn">
+                            <span class="btn-text">Sign In</span>
+                            <span class="btn-loader hidden">🔄</span>
+                        </button>
+                    </form>
+                </div>
+            </div>
+
+            <!-- Registration Form -->
+            <div id="registration-section" class="form-section">
+                <div class="form-card">
+                    <div class="form-header">
+                        <h2>Parent Registration</h2>
+                        <p>Create your account to get started</p>
+                    </div>
+                    <form id="registerForm" class="auth-form">
+                        <div class="input-group">
+                            <label for="parentName" class="input-label">Full Name</label>
+                            <input type="text" id="parentName" class="form-input" placeholder="Enter your full name" required />
+                        </div>
+                        <div class="input-group">
+                            <label for="parentPhone" class="input-label">Phone Number</label>
+                            <input type="tel" id="parentPhone" class="form-input" placeholder="Enter your phone number" required />
+                        </div>
+                        <div class="input-group">
+                            <label for="parentEmail" class="input-label">Email Address</label>
+                            <input type="email" id="parentEmail" class="form-input" placeholder="Enter your email address" required autocomplete="username" />
+                        </div>
+                        <div class="input-group">
+                            <label for="parentPassword" class="input-label">Password</label>
+                            <input type="password" id="parentPassword" class="form-input" placeholder="Create a secure password" required autocomplete="new-password" />
+                        </div>
+                        <div class="input-group">
+                            <label for="childUIDRegister" class="input-label">Child UID</label>
+                            <input type="text" id="childUIDRegister" class="form-input" placeholder="Enter your child's UID" required />
+                        </div>
+                        <button type="submit" class="submit-btn">
+                            <span class="btn-text">Create Account</span>
+                            <span class="btn-loader hidden">🔄</span>
+                        </button>
+                    </form>
+                </div>
+            </div>
+
+            <!-- Support Notice -->
+            <div class="support-notice">
+                <div class="notice-content">
+                    <span class="notice-icon">💬</span>
+                    <div class="notice-text">
+                        <p><strong>Need Help?</strong></p>
+                        <p>For any assistance, contact us at <a href="mailto:vitgo.vitvellore@gmail.com">vitgo.vitvellore@gmail.com</a></p>
+                    </div>
+                </div>
+            </div>
         </div>
-        <!-- Toggle Buttons -->
-        <div class="form-toggle">
-            <button id="showLogin" class="active">Login</button>
-            <button id="showRegister">Register</button>
-        </div>
-
-        <!-- Login Form -->
-        <section id="login-section" class="form-section active">
-            <h2>Parent Login</h2>
-            <form id="loginForm">
-                <input type="text" id="childUID" placeholder="Enter Child UID" required />
-                <input type="email" id="loginEmail" placeholder="Email" required autocomplete="username" />
-                <input type="password" id="loginPassword" placeholder="Password" required autocomplete="current-password" />
-                <button type="submit">Login</button>
-            </form>
-        </section>
-
-        <!-- Registration Form -->
-        <section id="registration-section" class="form-section">
-            <h2>Parent Registration</h2>
-            <form id="registerForm">
-                <label for="parentName">Parent Name:</label>
-                <input type="text" id="parentName" placeholder="Enter your name" required />
-
-                <label for="parentPhone">Parent Phone Number:</label>
-                <input type="tel" id="parentPhone" placeholder="Enter your phone number" required />
-
-                <label for="parentEmail">Parent Email ID:</label>
-                <input type="email" id="parentEmail" placeholder="Enter your email" required autocomplete="username" />
-
-                <label for="parentPassword">Password:</label>
-                <input type="password" id="parentPassword" placeholder="Create a password" required autocomplete="new-password" />
-
-                <label for="childUIDRegister">Child UID:</label>
-                <input type="text" id="childUIDRegister" placeholder="Enter Child UID" required />
-
-                <button type="submit">Register</button>
-            </form>
-        </section>
     </main>
 
-    <!-- Pop-Up Notification -->
-    <div id="notification" class="notification hidden">
-        <span id="notification-message"></span>
-        <button id="close-notification">Close</button>
+    <!-- Toast Notification -->
+    <div id="notification" class="toast-notification">
+        <div class="toast-content">
+            <span id="notification-icon" class="toast-icon">✓</span>
+            <span id="notification-message" class="toast-message"></span>
+            <button id="close-notification" class="toast-close">×</button>
+        </div>
     </div>
 
     <!-- Footer Section -->
-    <footer>
+    <footer class="footer">
         <div class="footer-content">
-            <p>&copy; 2025 VITGO. All Rights Reserved.</p>
-            <div class="social-links">
-                <a href="#">Instagram</a>|<a href="#">LinkedIn</a>
+            <div class="footer-main">
+                <div class="footer-brand">
+                    <img src="../assets/logo (1).png" alt="VITGO Logo" class="footer-logo">
+                    <span class="footer-title">VITGO</span>
+                </div>
+                <div class="footer-text">
+                    <p>&copy; 2025 VITGO. All Rights Reserved.</p>
+                    <p>Empowering education through technology</p>
+                </div>
+            </div>
+            <div class="footer-social">
+                <a href="#" class="social-link" aria-label="Instagram">
+                    <span class="social-icon">📷</span>
+                    Instagram
+                </a>
+                <a href="#" class="social-link" aria-label="LinkedIn">
+                    <span class="social-icon">💼</span>
+                    LinkedIn
+                </a>
             </div>
         </div>
     </footer>
